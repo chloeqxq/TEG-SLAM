@@ -1,0 +1,14 @@
+inherit_from: ./configs/Custom/wandering_temporal_objperm_v10_smoke.yaml
+
+scene: iphone_wandering_temporal_objperm_v11_smoke
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_objperm_v11_smoke
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      post_cleanup_prune_activate: True
+      post_cleanup_prune_min_opacity: 0.06
+      post_cleanup_prune_erosion_radius: 1
+      post_cleanup_prune_max_ratio: 0.06

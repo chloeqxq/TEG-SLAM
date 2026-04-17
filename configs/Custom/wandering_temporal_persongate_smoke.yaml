@@ -1,0 +1,7 @@
+inherit_from: ./configs/Custom/wandering_temporal_persongate.yaml
+
+scene: iphone_wandering_temporal_persongate_smoke
+max_frames: 180
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_persongate_smoke

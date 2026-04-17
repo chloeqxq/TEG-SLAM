@@ -1,0 +1,23 @@
+inherit_from: ./configs/Custom/wandering_temporal_objperm_smoke.yaml
+
+scene: iphone_wandering_temporal_objperm_v2_smoke
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_objperm_v2_smoke
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      decay: 0.98
+      on_threshold: 0.48
+      off_threshold: 0.25
+      release_threshold: 0.82
+      low_parallax_decay: 1.0
+      support_radius: 3
+      support_scale: 1.0
+      insertion_dynamic_threshold: 0.30
+      insertion_dilation_radius: 6
+      insertion_max_mask_ratio: 0.45
+      insertion_min_remaining_depth_ratio: 0.15
+      insertion_uncertainty_threshold: 1.2
+      insertion_uncertainty_scale: 1.0

@@ -1,0 +1,21 @@
+inherit_from: ./configs/Custom/wandering_temporal_proposal_v4.yaml
+
+scene: iphone_wandering_temporal_proposal_v5
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_proposal_v5
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      post_cleanup_opacity_decay_activate: True
+      post_cleanup_dynamic_threshold: 0.45
+      post_cleanup_dilation_radius: 1
+      post_cleanup_max_mask_ratio: 0.20
+      post_cleanup_min_mask_ratio: 0.005
+
+      post_cleanup_opacity_decay_min_opacity: 0.08
+      post_cleanup_opacity_decay_erosion_radius: 1
+      post_cleanup_opacity_decay_max_ratio: 0.035
+      post_cleanup_opacity_decay_factor: 0.45
+      post_cleanup_opacity_decay_floor: 0.03

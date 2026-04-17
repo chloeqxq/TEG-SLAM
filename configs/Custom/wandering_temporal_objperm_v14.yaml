@@ -1,0 +1,42 @@
+inherit_from: ./configs/Custom/wandering_temporal_objperm_v7.yaml
+
+scene: iphone_wandering_temporal_objperm_v14
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_objperm_v14
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      post_cleanup_iters: 4200
+      post_cleanup_dynamic_threshold: 0.33
+      post_cleanup_uncertainty_threshold: 0.75
+      post_cleanup_uncertainty_scale: 1.0
+      post_cleanup_dilation_radius: 6
+      post_cleanup_temporal_support_threshold: 0.18
+      post_cleanup_temporal_support_radius: 10
+      post_cleanup_max_mask_ratio: 0.50
+      post_cleanup_min_mask_ratio: 0.005
+      post_cleanup_opacity_weight: 28.0
+      post_cleanup_static_l1_weight: 0.10
+      post_cleanup_optimize_exposure: False
+      post_cleanup_prune_activate: False
+      demo_dynamic_eraser_activate: True
+      demo_dynamic_eraser_dynamic_threshold: 0.38
+      demo_dynamic_eraser_uncertainty_threshold: 0.80
+      demo_dynamic_eraser_uncertainty_scale: 1.0
+      demo_dynamic_eraser_dilation_radius: 3
+      demo_dynamic_eraser_temporal_support_threshold: 0.20
+      demo_dynamic_eraser_temporal_support_radius: 8
+      demo_dynamic_eraser_max_mask_ratio: 0.22
+      demo_dynamic_eraser_min_mask_ratio: 0.002
+      demo_dynamic_eraser_use_person_segmentation: True
+      demo_dynamic_eraser_min_person_overlap_ratio: 0.03
+      demo_dynamic_eraser_person_class_id: 15
+      demo_dynamic_eraser_person_confidence_threshold: 0.30
+      demo_dynamic_eraser_person_dilation_radius: 3
+      demo_dynamic_eraser_person_prior_threshold: 0.30
+      demo_dynamic_eraser_inpaint_radius: 3
+      demo_dynamic_eraser_inpaint_method: ns
+      demo_dynamic_eraser_feather_sigma: 1.4
+      demo_dynamic_eraser_inpaint_depth: False

@@ -1,0 +1,27 @@
+inherit_from: ./configs/Custom/wandering_temporal.yaml
+
+scene: iphone_wandering_temporal_persongate
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_persongate
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      # Keep the temporal-only backbone and only veto new Gaussian insertion
+      # inside a conservative person region.
+      insertion_mask_activate: True
+      insertion_dynamic_threshold: 0.35
+      insertion_dilation_radius: 0
+      insertion_max_mask_ratio: 0.45
+      insertion_min_remaining_depth_ratio: 0.20
+      insertion_uncertainty_threshold: -1.0
+
+      insertion_use_person_segmentation: True
+      insertion_person_class_id: 15
+      insertion_person_confidence_threshold: 0.40
+      insertion_person_dilation_radius: 1
+      insertion_person_erosion_radius: 0
+
+      post_cleanup_activate: False
+      demo_dynamic_eraser_activate: False

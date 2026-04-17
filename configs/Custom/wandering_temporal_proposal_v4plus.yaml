@@ -1,0 +1,12 @@
+inherit_from: ./configs/Custom/wandering_temporal_proposal_v4.yaml
+
+scene: iphone_wandering_temporal_proposal_v4plus
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_proposal_v4plus
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      insertion_use_temporal_prior_support: True
+      insertion_temporal_prior_gain: 1.15

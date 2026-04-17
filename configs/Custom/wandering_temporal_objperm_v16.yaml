@@ -1,0 +1,24 @@
+inherit_from: ./configs/Custom/wandering_temporal_objperm_v7.yaml
+
+scene: iphone_wandering_temporal_objperm_v16
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_objperm_v16
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      # Fix background blur: stop using uncertainty for dynamic masks!
+      insertion_uncertainty_threshold: -1.0
+      post_cleanup_uncertainty_threshold: -1.0
+      
+      # Safer cleanup targeting only the person area
+      post_cleanup_iters: 3000
+      post_cleanup_dynamic_threshold: 0.35
+      post_cleanup_roi_radius: 50
+      post_cleanup_opacity_weight: 20.0
+      post_cleanup_static_l1_weight: 0.05
+      post_cleanup_opacity_only: True
+      
+      # Turn off demo eraser during SLAM; we will do targeted LaMa post-processing offline
+      demo_dynamic_eraser_activate: False

@@ -1,0 +1,21 @@
+inherit_from: ./configs/Custom/wandering_temporal_proposal_v5.yaml
+
+scene: iphone_wandering_temporal_proposal_v6
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_proposal_v6
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      post_cleanup_opacity_decay_mode: gaussian_evidence
+      post_cleanup_opacity_decay_max_ratio: 0.05
+
+      post_cleanup_evidence_view_min_opacity: 0.05
+      post_cleanup_evidence_min_observations: 2
+      post_cleanup_evidence_min_dynamic_hits: 2
+      post_cleanup_evidence_dynamic_ratio_threshold: 0.55
+      post_cleanup_evidence_max_static_ratio: 0.45
+      post_cleanup_evidence_dynamic_margin: 0.0
+      post_cleanup_evidence_depth_abs_tolerance: 0.08
+      post_cleanup_evidence_depth_rel_tolerance: 0.05

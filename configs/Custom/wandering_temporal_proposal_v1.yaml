@@ -1,0 +1,14 @@
+inherit_from: ./configs/Custom/wandering_temporal.yaml
+
+scene: iphone_wandering_temporal_proposal_v1
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_proposal_v1
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      tracking_use_temporal_posterior: True
+      mapping_use_temporal_posterior: True
+      post_cleanup_activate: False
+      demo_dynamic_eraser_activate: False

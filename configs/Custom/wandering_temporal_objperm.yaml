@@ -1,0 +1,25 @@
+inherit_from: ./configs/Custom/wandering_temporal.yaml
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_objperm
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      activate: True
+      decay: 0.97
+      on_threshold: 0.50
+      off_threshold: 0.30
+      release_threshold: 0.75
+      evidence_decay: 0.95
+      min_parallax_px: 1.0
+      min_weight: 0.03
+      low_parallax_px: 1.5
+      low_parallax_decay: 0.995
+      support_radius: 2
+      support_scale: 0.9
+      insertion_mask_activate: True
+      insertion_dynamic_threshold: 0.40
+      insertion_dilation_radius: 4
+      insertion_max_mask_ratio: 0.22
+      insertion_min_remaining_depth_ratio: 0.25

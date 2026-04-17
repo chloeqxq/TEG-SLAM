@@ -1,0 +1,16 @@
+inherit_from: ./configs/Custom/wandering_temporal_objperm_smoke.yaml
+
+scene: iphone_wandering_temporal_objperm_v3_smoke
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_objperm_v3_smoke
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      insertion_dynamic_threshold: 0.35
+      insertion_dilation_radius: 6
+      insertion_max_mask_ratio: 0.45
+      insertion_min_remaining_depth_ratio: 0.20
+      insertion_uncertainty_threshold: 1.5
+      insertion_uncertainty_scale: 1.0

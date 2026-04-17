@@ -1,0 +1,20 @@
+inherit_from: ./configs/Custom/wandering_temporal_objperm_v3_smoke.yaml
+
+scene: iphone_wandering_temporal_objperm_v4_smoke
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_objperm_v4_smoke
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      post_cleanup_activate: True
+      post_cleanup_iters: 1200
+      post_cleanup_dynamic_threshold: 0.45
+      post_cleanup_uncertainty_threshold: 1.2
+      post_cleanup_uncertainty_scale: 1.0
+      post_cleanup_dilation_radius: 4
+      post_cleanup_max_mask_ratio: 0.45
+      post_cleanup_min_mask_ratio: 0.01
+      post_cleanup_opacity_weight: 6.0
+      post_cleanup_static_l1_weight: 0.05

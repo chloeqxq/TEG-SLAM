@@ -1,0 +1,15 @@
+inherit_from: ./configs/Custom/wandering_temporal_proposal_v2.yaml
+
+scene: iphone_wandering_temporal_proposal_v3
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_proposal_v3
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      person_prior_activate: True
+      person_prior_class_id: 15
+      person_prior_confidence_threshold: 0.35
+      person_prior_dilation_radius: 1
+      person_prior_min_dynamic: 0.70

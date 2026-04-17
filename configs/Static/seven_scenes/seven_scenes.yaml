@@ -1,0 +1,32 @@
+inherit_from: ./configs/wildgs_slam.yaml
+
+dataset: '7scenes'
+
+mapping:
+  Calibration:
+    depth_scale: 5000.0
+  # uncertainty_params:
+  #   activate: True
+
+tracking:
+  buffer: 500
+  warmup: 12
+  multiview_filter:
+    visible_num: 2  
+  frontend:
+    keyframe_thresh: 3.0
+    radius: 2
+  backend:
+    loop_nms: 10
+  # uncertainty_params:
+  #   activate: True
+
+cam: 
+  png_depth_scale: 5000.0 # this is copied from TUM_RGBD, not sure if it is correct for 7-scenes, but it's not useful in wildgs-slam
+  # No distortion for 7-scenes, so no need to crop
+  H_out: 384
+  W_out: 512
+
+data:
+  root_folder: YOUR_PATH_TO_7SCENES_DATASET
+  output: ./output/7scenes

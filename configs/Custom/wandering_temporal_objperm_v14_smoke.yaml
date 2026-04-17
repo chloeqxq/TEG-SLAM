@@ -1,0 +1,16 @@
+inherit_from: ./configs/Custom/wandering_temporal_objperm_v12_smoke.yaml
+
+scene: iphone_wandering_temporal_objperm_v14_smoke
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_objperm_v14_smoke
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      demo_dynamic_eraser_max_mask_ratio: 0.22
+      demo_dynamic_eraser_person_prior_threshold: 0.30
+      demo_dynamic_eraser_person_confidence_threshold: 0.30
+      demo_dynamic_eraser_person_dilation_radius: 3
+      demo_dynamic_eraser_inpaint_radius: 3
+      demo_dynamic_eraser_feather_sigma: 1.4

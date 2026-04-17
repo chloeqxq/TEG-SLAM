@@ -1,0 +1,8 @@
+inherit_from: ./configs/Custom/wandering_temporal_proposal_v4plus.yaml
+
+scene: iphone_wandering_temporal_proposal_v4plus_smoke
+max_frames: 180
+fast_mode: True
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_proposal_v4plus_smoke

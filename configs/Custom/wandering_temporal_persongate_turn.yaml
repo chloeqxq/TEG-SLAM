@@ -1,0 +1,8 @@
+inherit_from: ./configs/Custom/wandering_temporal_persongate.yaml
+
+scene: iphone_wandering_temporal_persongate_turn
+max_frames: 760
+fast_mode: True
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_persongate_turn

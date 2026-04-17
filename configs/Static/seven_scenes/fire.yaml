@@ -1,0 +1,12 @@
+inherit_from: ./configs/Static/seven_scenes/seven_scenes.yaml
+scene: fire
+
+data:
+  input_folder: ROOT_FOLDER_PLACEHOLDER/fire
+cam:
+  H: 480 
+  W: 640 
+  fx: 585.0
+  fy: 585.0
+  cx: 320.0
+  cy: 240.0

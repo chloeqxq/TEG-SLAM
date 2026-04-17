@@ -1,0 +1,9 @@
+inherit_from: ./configs/Dynamic/Wild_SLAM_iPhone/wandering.yaml
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      activate: True

@@ -1,0 +1,69 @@
+inherit_from: ./configs/Dynamic/Wild_SLAM_Mocap/person_tracking.yaml
+
+scene: Person_v6_report
+
+data:
+  output: ./output/Wild_SLAM_Mocap_report_v6
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      activate: True
+
+      tracking_use_temporal_posterior: True
+      mapping_use_temporal_posterior: True
+      fusion_mode: log_odds
+      log_odds_measurement_gain: 1.0
+      log_odds_probability_floor: 0.15
+      log_odds_clip: 4.0
+
+      person_prior_activate: True
+      person_prior_class_id: 15
+      person_prior_confidence_threshold: 0.35
+      person_prior_dilation_radius: 1
+      person_prior_min_dynamic: 0.70
+
+      insertion_mask_activate: True
+      insertion_dynamic_threshold: 0.30
+      insertion_dilation_radius: 2
+      insertion_max_mask_ratio: 0.45
+      insertion_min_remaining_depth_ratio: 0.20
+      insertion_uncertainty_threshold: -1.0
+
+      insertion_use_person_segmentation: True
+      insertion_person_mask_mode: score_floor
+      insertion_person_class_id: 15
+      insertion_person_confidence_threshold: 0.35
+      insertion_person_dilation_radius: 2
+      insertion_person_erosion_radius: 0
+      insertion_person_min_dynamic: 0.90
+
+      insertion_enable_adaptive_threshold: False
+      insertion_enable_min_remaining_adaptive_threshold: False
+      insertion_fail_closed_skip: True
+      insertion_fail_closed_ratio: 0.50
+
+      post_cleanup_activate: False
+      post_cleanup_opacity_decay_activate: True
+      post_cleanup_dynamic_threshold: 0.45
+      post_cleanup_dilation_radius: 1
+      post_cleanup_max_mask_ratio: 0.20
+      post_cleanup_min_mask_ratio: 0.005
+
+      post_cleanup_opacity_decay_min_opacity: 0.08
+      post_cleanup_opacity_decay_erosion_radius: 1
+      post_cleanup_opacity_decay_max_ratio: 0.05
+      post_cleanup_opacity_decay_factor: 0.45
+      post_cleanup_opacity_decay_floor: 0.03
+      post_cleanup_opacity_decay_mode: gaussian_evidence
+
+      post_cleanup_evidence_view_min_opacity: 0.05
+      post_cleanup_evidence_min_observations: 2
+      post_cleanup_evidence_min_dynamic_hits: 2
+      post_cleanup_evidence_dynamic_ratio_threshold: 0.55
+      post_cleanup_evidence_max_static_ratio: 0.45
+      post_cleanup_evidence_dynamic_margin: 0.0
+      post_cleanup_evidence_depth_abs_tolerance: 0.08
+      post_cleanup_evidence_depth_rel_tolerance: 0.05
+
+      demo_dynamic_eraser_activate: False

@@ -1,0 +1,19 @@
+inherit_from: ./configs/Custom/wandering_temporal_objperm_v4_smoke.yaml
+
+scene: iphone_wandering_temporal_objperm_v5_smoke
+
+data:
+  output: ./output/Wild_SLAM_iPhone_temporal_objperm_v5_smoke
+
+mapping:
+  uncertainty_params:
+    temporal_params:
+      demo_dynamic_eraser_activate: True
+      demo_dynamic_eraser_dynamic_threshold: 0.34
+      demo_dynamic_eraser_uncertainty_threshold: 0.9
+      demo_dynamic_eraser_uncertainty_scale: 1.0
+      demo_dynamic_eraser_dilation_radius: 8
+      demo_dynamic_eraser_max_mask_ratio: 0.55
+      demo_dynamic_eraser_min_mask_ratio: 0.008
+      demo_dynamic_eraser_inpaint_radius: 4
+      demo_dynamic_eraser_inpaint_depth: True

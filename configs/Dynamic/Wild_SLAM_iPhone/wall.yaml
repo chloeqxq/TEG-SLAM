@@ -1,0 +1,11 @@
+inherit_from: ./configs/Dynamic/Wild_SLAM_iPhone/wild_slam_iphone.yaml
+scene: iphone_wall
+
+data:
+  input_folder: ROOT_FOLDER_PLACEHOLDER/wall
+
+cam:
+  fx: 1340.0843505859375
+  fy: 1340.0843505859375
+  cx: 960.63665771484375
+  cy: 729.08782958984375

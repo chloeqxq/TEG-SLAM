@@ -1,0 +1,17 @@
+datasets/
+build/
+*.egg-info/
+
+__pycache__/
+*.pyc
+*.so
+
+
+pretrained/
+
+output*/
+
+.vscode/
+.venv/
+
+temp/
