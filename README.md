@@ -31,15 +31,14 @@ TEG-SLAM addresses this limitation with a temporal evidence pipeline that:
 3. reuses the resulting temporal posterior during pose tracking, memory-aware mapping, and Gaussian insertion,
 4. performs Gaussian-level post-cleanup through evidence collection and opacity decay.
 
-The current repository contains the report-ready `v6` configuration used for our experiments, together with scripts for benchmark reproduction and artifact-focused analysis on `iphone_wandering`.
+The current repository contains the TEG-SLAM configurations used in our experiments, together with scripts for benchmark reproduction and artifact-focused analysis on `iphone_wandering`.
 
 ## Repository Highlights
 
 - `src/utils/dyn_uncertainty/temporal_fusion.py`: temporal posterior propagation and fusion utilities.
 - `src/depth_video.py`: posterior-guided tracking and person-prior integration.
 - `src/mapper.py`: memory-aware mapping, insertion masks, and Gaussian-level cleanup.
-- `scripts_run/run_wild_slam_mocap_v6_sequence.sh`: one-command reproduction for a single Wild-SLAM MoCap sequence.
-- `scripts_run/run_wild_slam_mocap_v6_all.sh`: full 10-sequence MoCap batch plus aggregated report generation.
+- `scripts_run/`: single-sequence and batch benchmark runners for Wild-SLAM MoCap.
 
 ## Installation
 
@@ -113,7 +112,7 @@ Download the demo sequence:
 bash scripts_downloading/download_demo_data.sh
 ```
 
-Run the report configuration of TEG-SLAM on the `crowd` sequence:
+Run TEG-SLAM on the `crowd` sequence:
 
 ```bash
 bash scripts_run/run_wild_slam_mocap_v6_sequence.sh crowd --profile report
@@ -121,10 +120,10 @@ bash scripts_run/run_wild_slam_mocap_v6_sequence.sh crowd --profile report
 
 This wrapper will:
 
-- generate a temporary `v6` config with temporal posterior, person-aware insertion gating, and Gaussian-level cleanup enabled,
+- generate a temporary benchmark config with temporal posterior, person-aware insertion gating, and Gaussian-level cleanup enabled,
 - run SLAM,
 - evaluate NVS automatically,
-- save outputs to `output/Wild_SLAM_Mocap_report_v6/Crowd_v6_report`.
+- save outputs under `output/`.
 
 ### 2. Real-world `iphone_wandering` stress test
 
@@ -134,7 +133,7 @@ Download the Wild-SLAM iPhone dataset:
 bash scripts_downloading/download_wild_slam_iphone.sh
 ```
 
-Run the `v6` TEG-SLAM config:
+Run the TEG-SLAM config:
 
 ```bash
 python run.py ./configs/Custom/wandering_temporal_proposal_v6.yaml
@@ -161,7 +160,7 @@ bash scripts_downloading/download_wild_slam_mocap_scene1.sh
 bash scripts_downloading/download_wild_slam_mocap_scene2.sh
 ```
 
-Run all `v6` benchmark sequences and build the aggregated report package:
+Run all benchmark sequences and build the aggregated report package:
 
 ```bash
 bash scripts_run/run_wild_slam_mocap_v6_all.sh --profile report
@@ -176,9 +175,8 @@ Useful options:
 
 Important outputs:
 
-- per-sequence SLAM and NVS results: `output/Wild_SLAM_Mocap_report_v6/<Scene>_v6_report`
-- aggregated report: `output/report_v6_full/report.md`
-- report tables and summary metrics: `output/report_v6_full/summary.json`
+- per-sequence SLAM and NVS results under `output/`
+- aggregated report package under `output/`
 
 ### Single-sequence reproduction
 
@@ -207,11 +205,8 @@ The report-ready configs enable the following controls under `mapping.uncertaint
 | `insertion_mask_activate` | Prevents likely dynamic regions from inserting new Gaussians. |
 | `post_cleanup_opacity_decay_activate` | Applies Gaussian-level evidence collection and opacity decay after the run. |
 
-Useful starting configs:
+Useful starting configs and templates live in `configs/Custom/`, including:
 
-- `configs/Custom/wandering_temporal_proposal_v6.yaml`
-- `configs/Custom/crowd_temporal_proposal_v6_report.yaml`
-- `configs/Custom/person_temporal_proposal_v6_report.yaml`
 - `configs/Custom/custom_template.yaml`
 
 ## Running on Your Own Data
@@ -237,26 +232,28 @@ Then:
 python run.py /path/to/your_config.yaml
 ```
 
-## Results Snapshot
+## Experimental Results
 
-The current `v6` report package supports a focused claim: TEG-SLAM is strongest on human-dynamic scenes and on the real-world ghosting failure case `iphone_wandering`. It is not yet a uniform improvement across the full 10-sequence MoCap benchmark, so we report the most defensible results directly.
-
-| Setting | Metric | WildGS-SLAM paper | TEG-SLAM v6 |
-| --- | --- | ---: | ---: |
-| `Crowd` | ATE (cm) ↓ | 0.300 | 0.273 |
-| `Crowd` | PSNR ↑ | 21.280 | 21.383 |
-| `Person` | ATE (cm) ↓ | 0.800 | 0.767 |
-| `Person` | PSNR ↑ | 20.310 | 20.618 |
-| `iphone_wandering` | Mean BG PSNR ↑ | - | 18.410 |
-| `iphone_wandering` | Mean BG MAE ↓ | - | 19.183 |
-| `iphone_wandering` | Tail BG PSNR ↑ | - | 18.118 |
-| `iphone_wandering` | Tail BG MAE ↓ | - | 20.521 |
-
-Across all 10 Wild-SLAM MoCap sequences, the current `v6` package averages `0.690 cm` ATE versus `0.460 cm` from the paper-reported WildGS-SLAM baseline. In other words, the method should be framed as a targeted improvement for dynamic robustness and artifact suppression rather than a universal replacement.
+We summarize the main quantitative results with the four tables below.
 
 <p align="center">
-  <img src="./output/Wild_SLAM_iPhone/iphone_wandering/plots_after_refine/video_idx_8_kf_idx_72.png" alt="TEG-SLAM wandering artifact cleanup example" width="100%">
+  <img src="./media/readme_tables/table1_tracking.png" alt="Table I tracking performance across dynamic datasets" width="60%">
 </p>
+
+<p align="center">
+  <img src="./media/readme_tables/table2_mocap_comparison.png" alt="Table II Wild-SLAM MoCap comparison" width="100%">
+</p>
+
+<table align="center">
+  <tr>
+    <td align="center" valign="top">
+      <img src="./media/readme_tables/table3_wandering_cleanup.png" alt="Table III iphone wandering artifact-focused comparison" width="100%">
+    </td>
+    <td align="center" valign="top">
+      <img src="./media/readme_tables/table4_ablation.png" alt="Table IV iphone wandering ablation study" width="100%">
+    </td>
+  </tr>
+</table>
 
 ## Outputs and Evaluation
 
